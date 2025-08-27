@@ -1,0 +1,104 @@
+{
+  "data" : [ {
+    "node" : {
+      "idRef" : "partyrole-dos0196071/00@03-1",
+      "type" : "PartyRole",
+      "app" : "PRT",
+      "domain" : "FINANCIAL",
+      "version" : "v1",
+      "topic" : "staging_prt_out_partyrole_v1_ini",
+      "entity" : {
+        "payload" : {
+          "entity" : {
+            "eventCode" : {
+              "operationCode" : "CTR_FIN_PRT_AEX_ACT",
+              "reasonCode" : "APD"
+            },
+            "data" : {
+              "partyRoleCode" : "EMPRUNT",
+              "invoiceCopiesNumber" : 1,
+              "lateChargeFormula" : "SANS_IR",
+              "partyRoleReference" : "DOS0196071/00@03-1",
+              "partyReference" : "4901233",
+              "eventIdentifier" : "9783417",
+              "parRolesAdresses" : [ {
+                "activationdate" : "2022-11-09",
+                "address3" : "92110 CLICHY",
+                "address1" : "10, AVENUE ANATOLE FRANCE",
+                "countrycode" : "FR"
+              } ],
+              "localPartyIdentifier" : "0490123300000",
+              "parRolesPaymentsModes" : [ {
+                "terminationDate" : "2022-11-09",
+                "paymentModeCode" : "CHQ",
+                "activationDate" : "2022-11-09",
+                "paymentModeType" : "D"
+              }, {
+                "paymentModeCode" : "VIRSEPA",
+                "partyIBAN" : "FR7630066108440002047980183",
+                "activationDate" : "2022-11-10",
+                "paymentModeType" : "D"
+              }, {
+                "terminationDate" : "2022-11-09",
+                "paymentModeCode" : "CHQ",
+                "activationDate" : "2022-11-09",
+                "paymentModeType" : "E"
+              }, {
+                "paymentModeCode" : "PRLAUTO",
+                "partyIBAN" : "FR7630066108440002047980183",
+                "activationDate" : "2022-11-10",
+                "paymentModeType" : "E"
+              } ],
+              "customerAgreementLocIdentifier" : 302471,
+              "activationDate" : "2022-11-09",
+              "customerAgreementReference" : "DOS0196071/00@03"
+            },
+            "domain" : "FINANCIAL",
+            "links" : [ {
+              "idRef" : "customerAgreement-DOS0196071/00@03",
+              "type" : "dependOn"
+            }, {
+              "idRef" : "bcpParty-4901233",
+              "type" : "dependOn"
+            }, {
+              "idRef" : "iban-FR7630066108440002047980183",
+              "type" : "dependOn"
+            } ],
+            "type" : "PartyRole",
+            "idRef" : "partyRole-DOS0196071/00@03-1"
+          }
+        },
+        "metadata" : {
+          "uuid" : "15248b56-67c8-4953-9f57-b29bfe92a4cd",
+          "correlationId" : "eddac1f0-c836-4ba6-9ec6-00183260aa47",
+          "parentId" : "e4781b71-9f2a-4778-91df-bd7a8695895b",
+          "name" : "partyRoleApproved",
+          "timestamp" : "2025-08-04T07:39:40.183116064Z",
+          "type" : "INITIAL",
+          "source" : {
+            "app" : "PRT",
+            "component" : "PRT-MOM-CUSAGR-PAR-ROLS-INI",
+            "domain" : "PRT"
+          },
+          "identity" : {
+            "authentication" : null,
+            "identifier" : "PRD-PRT-KSPEVT-CusAgr-ParRols-CLIID-3"
+          },
+          "ontologie" : null,
+          "additionalProperties" : null
+        },
+        "origin" : null
+      }
+    }
+  } ],
+  "size" : 10,
+  "currentPage" : 0,
+  "numberOfElements" : 1,
+  "hasNext" : false,
+  "authorizations" : {
+    "roles" : [ "KIF_INTERNAL_READ_ACCESS" ],
+    "accessRights" : [ "PRT", "SubBusinessCase", "SubFund" ],
+    "hiddenFields" : [ ],
+    "visibleFields" : [ ]
+  }
+}
