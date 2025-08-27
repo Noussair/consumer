@@ -11,15 +11,8 @@ import lombok.Getter;
 @Getter
 public class PartyRoleResponseDto {
 
-  @JsonProperty("payload")
-  private payload payload;
-
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  @Getter
-  public static class payload {
-    @JsonProperty("entity")
-    private entity entity;
-  }
+  @JsonProperty("entity")
+  private entity entity;
 
   @JsonIgnoreProperties(ignoreUnknown = true)
   @Getter

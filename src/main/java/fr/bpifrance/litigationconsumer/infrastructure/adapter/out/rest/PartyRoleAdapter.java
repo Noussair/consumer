@@ -18,9 +18,7 @@ public class PartyRoleAdapter implements PartyRolePort {
 
   @Override
   public PartyRole getCustomerAgreementRelatedPartyRole(String idRef) {
-    JsonNode partyRoleResponseDto = apiKifRestClient.getPartyRole(idRef);
-    System.out.println("test");
-    return null;
-    //    return partyRoleMapper.toDomain(partyRoleResponseDto);
+    PartyRoleResponseDto partyRoleResponseDto = apiKifRestClient.getPartyRole(idRef);
+    return partyRoleMapper.toDomain(partyRoleResponseDto);
   }
 }

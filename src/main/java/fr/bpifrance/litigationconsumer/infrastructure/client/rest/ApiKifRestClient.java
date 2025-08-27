@@ -16,5 +16,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface ApiKifRestClient {
 
   @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-  JsonNode getPartyRole(@RequestParam("idRef") String idRef);
+  PartyRoleResponseDto getPartyRole(@RequestParam("idRef") String idRef);
 }
