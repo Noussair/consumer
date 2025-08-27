@@ -1,0 +1,55 @@
+info:
+  app:
+    name: prt
+    env: dev
+kafka:
+  brokers: lkc-xg1ox-lqjjp.eu-west-3.aws.glb.confluent.cloud:9092
+  app: LITIGATION-CONSUMER
+  domain: PRT
+  clientId: LITGATION-CONSUMER-CLIENT
+  groupId: LITIGATION-CONSUMER-GROUP
+  username: 6O5PNHWGH6Y5DCP3
+  password: UomiUBClv9gVqvWmEXcHCPExP3GVVkUzeuAxA6U86z2200hCnzpgH0NsNbv5KsMM
+  readTopic: dev_prt_out_customeragreement_v1_ini
+  fallbackTopic: dev_prt_prv_debezium_crevt_tresimmo_crevt_err
+  outputTopic: dev_prt_prv_debezium_crevt_tresimmo_crevt_ini
+
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@//T0GC1:1523/PRTMOE1
+    username: TRESIMMO
+    password: Parisestmagique
+    driver-class-name: oracle.jdbc.OracleDriver
+    hikari:
+      schema: tresimmo
+      maximum-pool-size: 5
+
+
+logging:
+  level:
+    root: INFO
+    org.apache.kafka.clients: INFO
+    fr.bpifrance.oso.framework.oggy: INFO
+    #fr.bpifrance.litigationconsumer.infrastructure.client.rest.ApiConsRestClient: DEBUG
+    #fr.bpifrance.litigationconsumer.infrastructure.client.rest.ApiKifRestClient: DEBUG
+    #fr.bpifrance.litigationconsumer.infrastructure.client.rest.ApiUpdateRestClient: DEBUG
+
+
+ws.rest:
+  client-id: PRTMOAW
+  client-secret: WUaMfZEDS3j939hsEpog
+  grant-type: client_credentials
+  xapiKey: staging_prt_37788c95d306212effe1e3e9c0582552196dc796
+  isam:
+    url: https://authmoa.web.bpifrance.fr/mga/sps/oauth/oauth20/token
+  api-cons-prt:
+    url: https://apiv2-nprd.cloud.bpifrance.fr/staging/prt/api-cons/rest/v1/object
+  api-kif:
+    url: https://apiv2-nprd.cloud.bpifrance.fr/staging/kif/rest/v1/graph/search/entities/PartyRole
+  legacyProductCodeObjectCode: RC_Legacy_Product_Code
+  legacyProductCodeObjectReference: PRODCOMDOSRAC
+  api-update-prt:
+    url: https://apiv2-nprd.cloud.bpifrance.fr/staging/prt
+server:
+  port: 8181
+
