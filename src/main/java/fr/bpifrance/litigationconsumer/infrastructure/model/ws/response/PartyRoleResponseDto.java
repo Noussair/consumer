@@ -2,17 +2,43 @@ package fr.bpifrance.litigationconsumer.infrastructure.model.ws.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.List;
-
 import lombok.Getter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Getter
 public class PartyRoleResponseDto {
 
-  @JsonProperty("entity")
-  private entity entity;
+  @JsonProperty("data")
+  private List<DataWrapper> data;
+
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  @Getter
+  public static class DataWrapper {
+    @JsonProperty("node")
+    private Node node;
+  }
+
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  @Getter
+  public static class Node {
+    @JsonProperty("entity")
+    private EntityWrapper entity;
+  }
+
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  @Getter
+  public static class EntityWrapper {
+    @JsonProperty("payload")
+    private Payload payload;
+  }
+
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  @Getter
+  public static class Payload {
+    @JsonProperty("entity")
+    private entity entity;
+  }
 
   @JsonIgnoreProperties(ignoreUnknown = true)
   @Getter

@@ -11,12 +11,17 @@ import java.util.stream.Collectors;
 public class PartyRoleMapper {
   public PartyRole toDomain(PartyRoleResponseDto response) {
     if (response == null
-        || response.getPayload() == null
-        || response.getPayload().getEntity() == null) {
+        || response.getData() == null
+        || response.getData().isEmpty()
+        || response.getData().get(0).getNode() == null
+        || response.getData().get(0).getNode().getEntity() == null
+        || response.getData().get(0).getNode().getEntity().getPayload() == null
+        || response.getData().get(0).getNode().getEntity().getPayload().getEntity() == null) {
       return null;
     }
 
-    PartyRoleResponseDto.entity responseEntity = response.getPayload().getEntity();
+    PartyRoleResponseDto.entity responseEntity =
+        response.getData().get(0).getNode().getEntity().getPayload().getEntity();
     PartyRole.entity domainEntity =
         PartyRole.entity
             .builder()
