@@ -2,6 +2,7 @@ package fr.bpifrance.litigationconsumer.infrastructure.client.rest;
 
 import fr.bpifrance.litigationconsumer.infrastructure.client.config.FeignDebugConfig;
 import fr.bpifrance.litigationconsumer.infrastructure.client.interceptor.IsamInterceptor;
+import fr.bpifrance.litigationconsumer.infrastructure.model.ws.response.LocalPartyIdentifierDto;
 import fr.bpifrance.litigationconsumer.infrastructure.model.ws.response.TupcodeDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
@@ -18,5 +19,9 @@ public interface ApiConsRestClient {
 
   @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
   List<TupcodeDto> getLegacyProductCodes(
+      @RequestParam String objectcode, @RequestParam String objectreference);
+
+  @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+  List<LocalPartyIdentifierDto> getLocalPartyIdentifier(
       @RequestParam String objectcode, @RequestParam String objectreference);
 }

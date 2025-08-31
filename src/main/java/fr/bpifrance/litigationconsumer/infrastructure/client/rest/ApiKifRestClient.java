@@ -1,6 +1,5 @@
 package fr.bpifrance.litigationconsumer.infrastructure.client.rest;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import fr.bpifrance.litigationconsumer.infrastructure.client.config.FeignDebugConfig;
 import fr.bpifrance.litigationconsumer.infrastructure.client.interceptor.IsamInterceptor;
 import fr.bpifrance.litigationconsumer.infrastructure.model.ws.response.PartyRoleResponseDto;

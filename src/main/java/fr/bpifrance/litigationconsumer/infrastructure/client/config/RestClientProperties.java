@@ -26,6 +26,7 @@ public class RestClientProperties {
     private ApiConsPrt apiConsPrt;
     private String legacyProductCodeObjectCode;
     private String legacyProductCodeObjectReference;
+    private String localIdentifierObjectCode;
 
     @Getter
     @Setter

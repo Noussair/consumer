@@ -2,7 +2,7 @@ package fr.bpifrance.litigationconsumer.infrastructure.client.rest;
 
 import feign.FeignException;
 import fr.bpifrance.litigationconsumer.infrastructure.client.interceptor.IsamInterceptor;
-import fr.bpifrance.litigationconsumer.infrastructure.model.ws.request.AddActRoleRequestDto;
+import fr.bpifrance.litigationconsumer.infrastructure.model.ws.request.AddPayAssRoleRequestDto;
 import fr.bpifrance.litigationconsumer.infrastructure.model.ws.response.ApiUpdateResponseDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
@@ -25,7 +25,7 @@ public interface ApiUpdateRestClient {
       consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
       produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
   @ResponseBody
-  ResponseEntity<ApiUpdateResponseDto> addActRole(
-      @RequestBody AddActRoleRequestDto requestBody, @RequestParam("module") String module)
+  ResponseEntity<ApiUpdateResponseDto> addPayAssRole(
+      @RequestBody AddPayAssRoleRequestDto requestBody, @RequestParam("module") String module)
       throws FeignException.FeignClientException;
 }

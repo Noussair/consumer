@@ -1,9 +1,10 @@
 package fr.bpifrance.litigationconsumer.domain.service;
 
 import fr.bpifrance.litigationconsumer.domain.model.CustomerAgreement;
-import fr.bpifrance.litigationconsumer.domain.model.PartyRole;
+import fr.bpifrance.litigationconsumer.domain.model.InsurancePay;
 import fr.bpifrance.litigationconsumer.domain.port.in.ProcessCustomerAgreementEventUseCase;
-import fr.bpifrance.litigationconsumer.domain.port.out.LitigationPort;
+import fr.bpifrance.litigationconsumer.domain.port.out.PayAssRolePort;
+import fr.bpifrance.litigationconsumer.domain.port.out.LocalPartyIdentifierPort;
 import fr.bpifrance.litigationconsumer.domain.port.out.PartyRolePort;
 import fr.bpifrance.litigationconsumer.infrastructure.cache.LegacyProductCodeCache;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +18,8 @@ public class LitigationService implements ProcessCustomerAgreementEventUseCase {
 
   private final LegacyProductCodeCache legacyProductCodeCache;
   private final PartyRolePort partyRolePort;
-  private final LitigationPort litigationPort;
+  private final PayAssRolePort payAssRolePort;
+  private final LocalPartyIdentifierPort localPartyIdentifierPort;
 
   @Override
   public void processEvent(CustomerAgreement customerAgreement) {
@@ -25,16 +27,26 @@ public class LitigationService implements ProcessCustomerAgreementEventUseCase {
 
     if (isEventEligibleForProcessing(customerAgreement)) {
       log.info("Event for agreement {} is eligible. Processing...", idRef);
-      String customerAgreementCode =
-          customerAgreement.getEntity().getData().getCustomerAgreementReference();
-      PartyRole partyRole =
+      String dosnum =
+          customerAgreement.getEntity().getData().getCustomerAgreementReference().split("/")[0];
+      String managementEntity =
+          customerAgreement.getEntity().getData().getCustomerAgreementManagementEntity();
+      /*PartyRole partyRole =
           partyRolePort.getCustomerAgreementRelatedPartyRole(
               "partyRole-".concat(customerAgreementCode).concat("-1"));
-
-      litigationPort.addPayAssRole(customerAgreement);
+      InsurancePay insurancePay = extractInsurancePayInfos(partyRole);
+      //      InsurancePay insurancePay = new InsurancePay();*/
+      String localPartyIdentifier = localPartyIdentifierPort.getLocalPartyIdentifier(dosnum);
+      InsurancePay insurancePay = extractInsurancePayInfos(managementEntity, localPartyIdentifier);
+      payAssRolePort.addPayAssRole(customerAgreement);
     } else {
       log.info("Event for agreement {} is not eligible. Skipping.", idRef);
     }
+  }
+
+  private InsurancePay extractInsurancePayInfos(
+      String managementEntity, String localPartyIdentifier) {
+    return new InsurancePay(localPartyIdentifier, "PAYASS", managementEntity);
   }
 
   private boolean isEventEligibleForProcessing(CustomerAgreement event) {

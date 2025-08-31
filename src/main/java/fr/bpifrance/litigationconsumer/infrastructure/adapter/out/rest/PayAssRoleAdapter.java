@@ -1,0 +1,20 @@
+package fr.bpifrance.litigationconsumer.infrastructure.adapter.out.rest;
+
+import fr.bpifrance.litigationconsumer.domain.model.InsurancePay;
+import fr.bpifrance.litigationconsumer.domain.port.out.PayAssRolePort;
+
+import fr.bpifrance.litigationconsumer.infrastructure.client.config.RestClientProperties.RestClientConfig;
+import fr.bpifrance.litigationconsumer.infrastructure.client.rest.ApiConsRestClient;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
+@Component
+@RequiredArgsConstructor
+public class PayAssRoleAdapter implements PayAssRolePort {
+
+  private final ApiConsRestClient apiConsRestClient;
+  private final RestClientConfig restClientConfig;
+
+  @Override
+  public void addPayAssRole(InsurancePay insurancePay) {}
+}

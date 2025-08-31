@@ -30,7 +30,7 @@ logging:
     root: INFO
     org.apache.kafka.clients: INFO
     fr.bpifrance.oso.framework.oggy: INFO
-    #fr.bpifrance.litigationconsumer.infrastructure.client.rest.ApiConsRestClient: DEBUG
+    fr.bpifrance.litigationconsumer.infrastructure.client.rest.ApiConsRestClient: DEBUG
     #fr.bpifrance.litigationconsumer.infrastructure.client.rest.ApiKifRestClient: DEBUG
     #fr.bpifrance.litigationconsumer.infrastructure.client.rest.ApiUpdateRestClient: DEBUG
 
@@ -48,6 +48,7 @@ ws.rest:
     url: https://apiv2-nprd.cloud.bpifrance.fr/staging/kif/rest/v1/graph/search/entities/PartyRole
   legacyProductCodeObjectCode: RC_Legacy_Product_Code
   legacyProductCodeObjectReference: PRODCOMDOSRAC
+  localIdentifierObjectCode: GET_LOCALPARTYIDENTIFIER
   api-update-prt:
     url: https://apiv2-nprd.cloud.bpifrance.fr/staging/prt
 server:
