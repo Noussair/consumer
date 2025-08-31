@@ -1,5 +1,6 @@
 package fr.bpifrance.litigationconsumer.domain.service;
 
+import fr.bpifrance.litigationconsumer.domain.model.AddPayAssRoleResponse;
 import fr.bpifrance.litigationconsumer.domain.model.CustomerAgreement;
 import fr.bpifrance.litigationconsumer.domain.model.InsurancePay;
 import fr.bpifrance.litigationconsumer.domain.port.in.ProcessCustomerAgreementEventUseCase;
@@ -38,7 +39,8 @@ public class LitigationService implements ProcessCustomerAgreementEventUseCase {
       //      InsurancePay insurancePay = new InsurancePay();*/
       String localPartyIdentifier = localPartyIdentifierPort.getLocalPartyIdentifier(dosnum);
       InsurancePay insurancePay = extractInsurancePayInfos(managementEntity, localPartyIdentifier);
-      payAssRolePort.addPayAssRole(customerAgreement);
+      AddPayAssRoleResponse addPayAssRoleResponse = payAssRolePort.addPayAssRole(insurancePay);
+      log.info("Response : {}", addPayAssRoleResponse.isSuccess());
     } else {
       log.info("Event for agreement {} is not eligible. Skipping.", idRef);
     }
