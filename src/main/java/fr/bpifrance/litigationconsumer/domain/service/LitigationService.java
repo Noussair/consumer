@@ -40,7 +40,10 @@ public class LitigationService implements ProcessCustomerAgreementEventUseCase {
       String localPartyIdentifier = localPartyIdentifierPort.getLocalPartyIdentifier(dosnum);
       InsurancePay insurancePay = extractInsurancePayInfos(managementEntity, localPartyIdentifier);
       AddPayAssRoleResponse addPayAssRoleResponse = payAssRolePort.addPayAssRole(insurancePay);
-      log.info("Response : {}", addPayAssRoleResponse.isSuccess());
+      log.info(
+          "Response : {}, Messages: {}",
+          addPayAssRoleResponse.isSuccess(),
+          addPayAssRoleResponse.getMessages());
     } else {
       log.info("Event for agreement {} is not eligible. Skipping.", idRef);
     }
